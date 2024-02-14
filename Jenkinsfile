@@ -4,11 +4,9 @@ pipeline {
         stage('Submit Stack') {
             steps {
             sh "aws cloudformation create-stack \
-    --stack-name user-group \
+    --stack-name my-stack-name1 \
     --template-body file://user-group.yaml \
-    --parameters ParameterKey=KeyName,ParameterValue=ddd.pem \
-    --capabilities CAPABILITY_NAMED_IAM \
-    --region 'ap-south-1'"
+    --capabilities CAPABILITY_NAMED_IAM"
               }
              }
             }

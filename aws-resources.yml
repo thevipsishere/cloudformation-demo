@@ -10,7 +10,7 @@ Resources:
   IAMUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: "MyIAMUser"
+      UserName: "Rock"
 
   IAMUserAccessKey:
     Type: AWS::IAM::AccessKey
@@ -59,7 +59,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: "10.0.0.0/24"
-      AvailabilityZone: "us-east-1a"
+      AvailabilityZone: "ap-south-1"
       MapPublicIpOnLaunch: true
       Tags:
         - Key: ddd.pem

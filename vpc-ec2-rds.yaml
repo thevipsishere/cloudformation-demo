@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Template for creating AWS resources (VPC, EC2, RDS, ALB) with IAM user and permissions.
 
 Parameters:
-  KeyName:
+  KeyName: ddd.pem
     Type: String
 
 Resources:

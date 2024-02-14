@@ -3,7 +3,6 @@ Description: Template for creating AWS resources (VPC, EC2, RDS, ALB) with IAM u
 
 Parameters:
   KeyName: ddd.pem
-    Description: The name of the existing EC2 Key Pair to SSH into instances
     Type: String
 
 Resources:

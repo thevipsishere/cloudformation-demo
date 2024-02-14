@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Template for creating AWS resources (VPC, EC2, RDS, ALB) with IAM user and permissions.
 
 Parameters:
-  KeyName: ddd.pem
+  KeyName:
     Type: String
 
 Resources:
@@ -121,66 +121,3 @@ Resources:
       MinSize: 2
       MaxSize: 5
       DesiredCapacity: 2
-      VPCZoneIdentifier:
-        - !Ref Subnet
-
-  LoadBalancerSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: "Security group for Application Load Balancer"
-      VpcId: !Ref VPC
-
-  LoadBalancerSecurityGroupIngressHTTP:
-    Type: AWS::EC2::SecurityGroupIngress
-    Properties:
-      GroupId: !Ref LoadBalancerSecurityGroup
-      IpProtocol: "tcp"
-      FromPort: 80
-      ToPort: 80
-      SourceSecurityGroupId: !Ref SecurityGroup
-
-  TargetGroup:
-    Type: AWS::ElasticLoadBalancingV2::TargetGroup
-    Properties:
-      Name: MyTargetGroup
-      Port: 80
-      Protocol: "HTTP"
-      TargetType: "instance"
-      VpcId: !Ref VPC
-
-  ApplicationLoadBalancer:
-    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
-    Properties:
-      Name: MyALB
-      Scheme: "internet-facing"
-      Subnets:
-        - !Ref Subnet
-      SecurityGroups:
-        - !Ref LoadBalancerSecurityGroup
-
-  LoadBalancerListener:
-    Type: AWS::ElasticLoadBalancingV2::Listener
-    Properties:
-      LoadBalancerArn: !Ref ApplicationLoadBalancer
-      Port: 80
-      Protocol: "HTTP"
-      DefaultActions:
-        - Type: "forward"
-          TargetGroupArn: !Ref TargetGroup
-
-Outputs:
-  IAMUserAccessKeyId:
-    Description: "IAM User Access Key ID"
-    Value: !Ref IAMUserAccessKey
-
-  VPCId:
-    Description: "VPC ID"
-    Value: !Ref VPC
-
-  SubnetId:
-    Description: "Subnet ID"
-    Value: !Ref Subnet
-
-  LoadBalancerDNSName:
-    Description: "Load Balancer DNS Name"
-    Value: !GetAtt ApplicationLoadBalancer.DNSName

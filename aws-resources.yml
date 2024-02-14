@@ -29,7 +29,7 @@ Resources:
       CidrBlock: "10.0.0.0/16"
       EnableDnsSupport: true
       Tags:
-        - Key: Name
+        - Key: ddd.pem
           Value: MyVPC
 
   InternetGateway:
@@ -62,7 +62,7 @@ Resources:
       AvailabilityZone: "us-east-1a"
       MapPublicIpOnLaunch: true
       Tags:
-        - Key: Name
+        - Key: ddd.pem
           Value: MySubnet
 
   SecurityGroup:
@@ -106,11 +106,11 @@ Resources:
           chkconfig httpd on
           echo "<html><body><h1>Hello World!</h1></body></html>" > /var/www/html/index.html
       Tags:
-        - Key: Name
+        - Key: ddd.pem
           Value: MyTaggedEC2Instance
         - Key: Environment
           Value: DevOpsAcademy
-        - Key: Nome
+        - Key: ddd.pem
           Value: Vincenzo
         - Key: Cognome
           Value: Privitera

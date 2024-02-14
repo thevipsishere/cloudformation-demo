@@ -6,7 +6,7 @@ pipeline {
             sh "aws cloudformation create-stack \
     --stack-name my-stack-name1 \
     --template-body file://user-group.yaml \
-    --capabilities CAPABILITY_NAMED_IAM"
+    --capabilities CAPABILITY_NAMED_IAM --region 'ap-south-1'"
               }
              }
             }

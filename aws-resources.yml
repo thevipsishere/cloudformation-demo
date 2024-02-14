@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Template for creating AWS resources (VPC, EC2, RDS, ALB) with IAM user and permissions.
 
 Parameters:
-  KeyName:
+  KeyName: ddd.pem
     Description: The name of the existing EC2 Key Pair to SSH into instances
     Type: String
 

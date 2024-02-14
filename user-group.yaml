@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyIAMGroup:
+    Type: "AWS::IAM::Group"
+    Properties:
+      GroupName: Volkswagen
+
+  MyIAMUser:
+    Type: "AWS::IAM::User"
+    Properties:
+      UserName: Polo
+      Groups:
+        - Ref: MyIAMGroup
+
+  MySNSTopic:
+    Type: "AWS::SNS::Topic"
+    Properties:
+      DisplayName: "My SNS Topic"
+      TopicName: "MySNSTopic"
+
+  MySNSSubscription:
+    Type: "AWS::SNS::Subscription"
+    Properties:
+      Protocol: "email"
+      TopicArn: !Ref MySNSTopic
+      Endpoint: "vipuldadgal@example.com"

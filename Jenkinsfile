@@ -4,8 +4,8 @@ pipeline {
         stage('Submit Stack') {
             steps {
             sh "aws cloudformation create-stack \
-    --stack-name my-stack-name1 \
-    --template-body file://user-group.yaml \
+    --stack-name aws-services \
+    --template-body file://aws-resources.yaml \
     --capabilities CAPABILITY_NAMED_IAM --region 'ap-south-1'"
               }
              }

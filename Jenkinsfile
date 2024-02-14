@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh """aws cloudformation create-stack \
                     --stack-name aws-services \
-                    --template-body file://aws-resources.yml \
+                    --template-body file://vpc-ec2-rds.yaml \
                     --capabilities CAPABILITY_NAMED_IAM \
                     --region 'ap-south-1'"""
             }
